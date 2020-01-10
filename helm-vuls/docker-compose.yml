@@ -1,0 +1,67 @@
+
+version: '3'
+services:
+  vuls:
+    build: vuls/
+    image: beehivesec/vuls
+    volumes:
+      - ~/.ssh:/root/.ssh:ro
+      - ./:/vuls
+      - ./vuls-log:/var/log/vuls
+    depends_on:
+      - db
+  cve:
+    build: cve-dictionary/
+    image: beehivesec/go-cve-dictionary
+    volumes:
+      - ./:/vuls
+      - ./vuls-log:/var/log/vuls
+    depends_on:
+      - db
+  oval:
+    build: oval-dictionary/
+    image: beehivesec/oval-dictionary
+    volumes:
+      - ./:/vuls
+      - ./vuls-log:/var/log/vuls
+    depends_on:
+      - db
+
+  gost:
+    image: vuls/gost
+    build: gost/
+    volumes:
+      - ./:/vuls
+      - ./vuls-log:/var/log/vuls
+    depends_on:
+      - db
+
+  go-exploitdb:
+    image: princechrismc/go-exploitdb
+    volumes:
+      - ./:/vuls
+      - ./vuls-log:/var/log/vuls
+    depends_on:
+      - db
+
+
+  db: # mysql Database
+    image: bitnami/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: cve
+      MYSQL_ROOT_HOST: "%"
+    volumes:
+      - ./data:/var/lib/mysql
+
+
+  vulsrepo:
+    image: vuls/vulsrepo
+    volumes:
+      - ./results:/vuls/results/
+      - ./:/vuls
+      - ./vuls-log:/var/log/vuls
+    depends_on:
+      - db
+    ports:
+      - "5111:5111"
