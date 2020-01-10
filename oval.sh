@@ -8,7 +8,7 @@ fi
 target=$1
 shift
 
-docker pull registry.cn-chengdu.aliyuncs.com/rapid7/vuls:goval-dictionary
+#docker pull registry.cn-chengdu.aliyuncs.com/rapid7/vuls:goval-dictionary
 
 case "$target" in
 	--redhat) docker run --rm -it \

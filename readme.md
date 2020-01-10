@@ -55,6 +55,20 @@ url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_gost?parseTime=true"
 
 ## Step4 开始格式化数据库
 ```shell script
+chmod -R 755 . 
+bash ./update.sh 
 
 ```
 
+**自己动手** 
+```
+docker run --rm -it \
+    -v $PWD:/vuls \
+    registry.cn-chengdu.aliyuncs.com/rapid7/vuls:goval-dictionary fetch-redhat redhat 6 7 8
+    
+```
+
+## Step5 开始根据配置文件扫描
+```shell script
+
+```
