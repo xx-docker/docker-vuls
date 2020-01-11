@@ -1,7 +1,7 @@
 # https://vuls.io/docs/en/usage-settings.html#servers-section
 [servers]
 [servers.testserver]
-host = "192.168.51.252"
+host = "127.0.0.1"
 port = "22"
 user = "root"
 keyPath = "/root/.ssh/id_rsa"
@@ -9,17 +9,17 @@ scanMode = [ "fast-root" ]
 
 [cveDict]
 type = "mysql"
-url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_cve?parseTime=true"
+url = "root:vulspa55@tcp(10.0.11.36:3306)/vuls_cve?parseTime=true"
 
 [ovalDict]
 type = "mysql"
-url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_goval?parseTime=true"
+url = "root:vulspa55@tcp(10.0.11.36:3306)/vuls_goval?parseTime=true"
 
 [gost]
 type = "mysql"
-url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_gost?parseTime=true"
+url = "root:vulspa55@tcp(10.0.11.36:3306)/vuls_gost?parseTime=true"
 
 [exploit]
 type = "mysql"
-url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_exploit?parseTime=true"
+url = "root:vulspa55@tcp(10.0.11.36:3306)/vuls_exploit?parseTime=true"
 

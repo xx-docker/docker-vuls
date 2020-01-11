@@ -68,7 +68,7 @@ services:
 
   mysql:
     container_name: vuls_db
-    image: 'registry.cn-hangzhou.aliyuncs.com/xxzhang/mysql:5.7'
+    image: registry.cn-hangzhou.aliyuncs.com/xxzhang/mysql:5.7
     volumes:
       - /srv/docker/mysql/vuls_data:/var/lib/mysql
       - ./docs/mysql.conf.d:/etc/mysql/mysql.conf.d
