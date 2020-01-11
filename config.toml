@@ -1,20 +1,11 @@
 # https://vuls.io/docs/en/usage-settings.html#servers-section
 [servers]
-
-# https://vuls.io/docs/en/usage-settings.html#default-section
-[default]
-port               = "22"
-#user               = "username"
-keyPath            = "/root/.ssh/id_rsa"
-scanMode           = ["fast"]
-#cpeNames = [
-#  "cpe:/a:rubyonrails:ruby_on_rails:4.2.1",
-#]
-#owaspDCXMLPath     = "/tmp/dependency-check-report.xml"
-#ignoreCves         = ["CVE-2014-6271"]
-#containerType      = "docker" #or "lxd" or "lxc" default: docker
-#containersIncluded = ["${running}"]
-#containersExcluded = ["container_name_a"]
+[servers.testserver]
+host = "192.168.51.252"
+port = "22"
+user = "root"
+keyPath = "/root/.ssh/id_rsa"
+scanMode = [ "fast-root" ]
 
 [cveDict]
 type = "mysql"
@@ -31,28 +22,4 @@ url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_gost?parseTime=true"
 [exploit]
 type = "mysql"
 url = "root:vulspa55@tcp(127.0.0.1:3306)/vuls_exploit?parseTime=true"
-
-[servers]
-[servers.testserver]
-host = "192.168.51.252"
-port = "22"
-user = "root"
-keyPath = "/root/.ssh/id_rsa"
-scanMode = [ "fast-root" ]
-
-
-# https://vuls.io/docs/en/usage-settings.html#http-section
-#[http]
-#url = "http://localhost:11234"
-
-# https://vuls.io/docs/en/usage-settings.html#syslog-section
-#[syslog]
-#protocol    = "tcp"
-#host        = "localhost"
-#port        = "514"
-#tag         = "vuls"
-#facility    = "local0"
-#severity    = "alert"
-#verbose     = false
-
 
