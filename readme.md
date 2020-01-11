@@ -107,11 +107,10 @@ docker run -itd --name=vulsdb -p 33306:3306 \
     -e MYSQL_ROOT_PASSWORD=vulspa55 \
     registry.cn-hangzhou.aliyuncs.com/xxzhang/mysql:5.7 
     
-docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_cve` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
-docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_goval` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
-docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_gost` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
-docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_exploit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;'
-
+docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_cve` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;' ;
+docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_goval` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;';
+docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_gost` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;';
+docker exec -t vulsdb mysql -uroot -pvulspa55 -e 'CREATE DATABASE `vuls_exploit` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;';
 
 # exploitdb 导入
 docker run --rm -it \
@@ -176,3 +175,8 @@ docker run --rm -it registry.cn-chengdu.aliyuncs.com/rapid7/vuls:goval-dictionar
 
 ## 重要执行的参考
 - https://vuls.io/docs/en/usage-configtest.html
+- 更换国外为国内 `sed -i
+  's/vuls\//registry.cn-chengdu.aliyuncs.com/rapid7/vuls:/g'
+  docker-compose.bak.yaml`
+  
+  

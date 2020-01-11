@@ -2,7 +2,7 @@ version: '2'
 
 services:
   vuls:
-    image: registry.cn-chengdu.aliyuncs.com/rapid7/vuls:vuls
+    image: vuls/vuls
     container_name: vuls
     volumes:
       - ~/.ssh:/root/.ssh:ro
@@ -13,7 +13,7 @@ services:
         ipv4_address: 10.0.11.12
 
   cve:
-    image: registry.cn-chengdu.aliyuncs.com/rapid7/vuls:go-cve-dictionary
+    image: vuls/go-cve-dictionary
     container_name: cve
     command: server --bind=0.0.0.0
     ports:
@@ -26,7 +26,7 @@ services:
         ipv4_address: 10.0.11.23
 
   oval:
-    image: registry.cn-chengdu.aliyuncs.com/rapid7/vuls:oval-dictionary
+    image: vuls/oval-dictionary
     container_name: oval
     command: server --bind=0.0.0.0
     ports:
@@ -40,7 +40,7 @@ services:
 
 
   gost:
-    image: registry.cn-chengdu.aliyuncs.com/rapid7/vuls:gost
+    image: vuls/gost
     container_name: gost
     command: server --bind=0.0.0.0
     ports:
@@ -54,7 +54,7 @@ services:
 
 
   go-exploitdb:
-    image: registry.cn-chengdu.aliyuncs.com/rapid7/vuls:go-exploitdb
+    image: vuls/go-exploitdb
     container_name: exploitdb
     command: server --bind=0.0.0.0
     ports:
@@ -86,8 +86,9 @@ services:
 
 
   vulsrepo:
-    image: registry.cn-chengdu.aliyuncs.com/rapid7/vuls:vulsrepo
+    image: vuls/vulsrepo
     volumes:
+      - ./results:/vuls/results/
       - ./:/vuls
       - ./vuls-log:/var/log/vuls
     ports:
